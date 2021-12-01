@@ -66,10 +66,45 @@ curl -I toto:python -X GET http://localhost:5000/pozos/api/v1.0/get_student_ages
 J'ai ce résultat :
 
 <div align="center">
-<img src="images\curl.PNG" width="800" height="40" />
+<img src="images\curl.PNG" width="500" height="60" />
 </div>
 
 Cette erreur d'authentification est sûrement dû à un mauvais username.
 
 
 ## Utilisation du docker-compose pour déployer 
+
+Maintenant passons au docker-compose. Voici un aperçu du fichier docker-compose.yaml :
+```
+version: "3.3"
+services:
+  API:
+    container_name: first_api
+    image: student_image
+    ports:
+      - "5000:5000"
+    volumes:
+      - "${PWD}/student_age.json:/data/student_age.json"
+  website:
+    container_name: website
+    depends_on:
+      - API
+    environment:
+      - PASSWORD=root
+      - USERNAME=toto
+    image: "php:apache"
+    ports:
+      - "80:80"
+    volumes:
+      - "./website:/var/www/html"
+
+```
+Pour le lancer :
+```
+docker-compose up -d 
+```
+<div align="center">
+<img src="images\up.PNG" width="500" height="60" />
+</div>
+
+Maintenant si on fait un petit tour sur le site :
