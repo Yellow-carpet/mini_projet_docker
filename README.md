@@ -7,7 +7,7 @@
 
 Le but de ce projet est de réviser ce que nous avons vu sur [Docker](https://www.docker.com/) au cours de cette formation.
 
-## Utilisation du docker file pour déployer 
+## Utilisation du dockerfile pour déployer 
 
 Pour répondre à la première question, il suffisait de créer le fichier docker file comme suit :
 
@@ -43,6 +43,33 @@ docker build -t student_image .
 
 Une fois l'image crée, nous n'avons plus qu'à crée notre conteneur.
 ```
-docker run  -p 5000:5000 -v ${PWD}/student_age.json:/data/student_age.json -d --name=first_api student_image
+docker run -d -p 5000:5000 -v ${PWD}/student_age.json:/data/student_age.json --name=first_api student_image
 ```
+Voici le résultat à l'écran :
+<div align="center">
+<img src="images\container_run.PNG" width="800" height="40" />
+</div>
 
+
+Donc pour expliquer la commande :
+ * -d : c'est pour le run en background
+ * -p : c'est le port
+ * -v : c'est pour attacher (mount) le fichier "student_age.json" dans le repertoire "data" du conteneur
+ * --name : represente le nom du conteneur
+ * student_image : le nom de l'image qui est utilsé pour crée notre conteneur.
+
+Quand je lance la commande suivante :
+
+```
+curl -I toto:python -X GET http://localhost:5000/pozos/api/v1.0/get_student_ages
+```
+J'ai ce résultat :
+
+<div align="center">
+<img src="images\curl.PNG" width="800" height="40" />
+</div>
+
+Cette erreur d'authentification est sûrement dû à un mauvais username.
+
+
+## Utilisation du docker-compose pour déployer 
