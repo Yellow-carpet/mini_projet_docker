@@ -109,6 +109,6 @@ docker-compose up -d
 
 Maintenant si on fait un petit tour sur le site :
 <div align="center">
-<img src="images\site1.PNG" width="500" height="60" />
+<img src="images\site1.PNG" width="700" height="500" />
 </div>
 
