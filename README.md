@@ -1,12 +1,13 @@
 # mini_projet_docker
 
-Le but de ce projet est de réviser ce que nous avons vu sur [Docker](https://www.docker.com/) au cours de cette formation.
-
-## Utilisation du docker file pour déployer 
 
 <div align="center">
 <img src="https://jolicode.com/media/original/2013/10/homepage-docker-logo.png" width="500" height="450" />
 </div>
+
+Le but de ce projet est de réviser ce que nous avons vu sur [Docker](https://www.docker.com/) au cours de cette formation.
+
+## Utilisation du docker file pour déployer 
 
 Pour répondre à la première question, il suffisait de créer le fichier docker file comme suit :
 
